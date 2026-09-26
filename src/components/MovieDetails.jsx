@@ -1,4 +1,5 @@
 import "../styles/movieDetails.css"
+import SaveButton from "./saveButton"
 
 
 
@@ -14,7 +15,7 @@ function MovieDetails({movie}) {
         <span className="movie-details-release-date">{movie.release_date}</span>
         <p className="movie-details-overview">{movie.overview}</p>
         <p className="movie-details-rating"><span className="details-star-symbol">✦</span> {movie.vote_average?.toFixed(1)}</p>
-        <button>Save</button>
+        <SaveButton movie={movie}/>
       </div>
     </div>
   )
