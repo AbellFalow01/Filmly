@@ -15,10 +15,8 @@ function SaveButton({ movie }) {
     let updatedSaved;
 
     if (isSaved) {
-      // Ta bort filmen
       updatedSaved = saved.filter((id) => id !== currentId);
     } else {
-      // Lägg till filmen
       updatedSaved = [...saved, currentId];
     }
 

@@ -61,4 +61,7 @@
   .movie-details {
     padding: 0;
   }
+  .movie-details-rating {
+    margin-bottom: 40px;
+  }
 }
