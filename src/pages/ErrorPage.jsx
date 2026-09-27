@@ -1,7 +1,7 @@
 function ErrorPage() {
 
   return (
-    <h1>ERROR PAGE</h1>
+    <h1>PAGE NOT FOUND!</h1>
   )
 }
 

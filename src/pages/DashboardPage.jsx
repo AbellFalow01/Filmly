@@ -4,7 +4,9 @@ import SearchBar from "../components/SearchBar"
 
 function DashboardPage() {
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
 
   const options = {
     method: 'GET',
@@ -15,11 +17,15 @@ function DashboardPage() {
 
   const getData = async () => {
       try {
+        setError("")
         const res = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
+        if (!res.ok) throw new Error("Could not load movies")
         const data = await res.json();
         setMovies(data.results)
       } catch (error) {
-        console.log(error);
+        setError("Something went wrong. Try again.");
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -28,12 +34,18 @@ function DashboardPage() {
   }, [])
 
   const searchMovie = async (search) => {
+    setLoading(true)
+    setError("")
+
     try {
       const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options);
+      if (!res.ok) throw new Error("Could not search for movie")
       const data = await res.json();
       setMovies(data.results)
     } catch (error) {
-      console.log(error);
+      setError("Something went wrong. Try again.");
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -43,11 +55,15 @@ function DashboardPage() {
       <SearchBar onSearch={searchMovie}/>
     </div>
     <div className="movie-grid">
-      {
+      { loading ? (
+        <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
         movies.map(movie => (
           <MovieCard key={movie.id} id={movie.id} poster_path={movie.poster_path} vote_average={movie.vote_average}/>
         ))
-      }
+      )}
     </div>
     </>
   )

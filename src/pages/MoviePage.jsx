@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 function MoviePage() {
 
   const [movie, setMovie] = useState();
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
   
 
   const {id} = useParams()
@@ -19,11 +21,15 @@ function MoviePage() {
 
     const getData = async () => {
       try {
+        setError("")
         const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options);
+        if (!res.ok) throw new Error("Could not search for movie")
         const data = await res.json();
         setMovie(data)
       } catch (error) {
-        console.log(error);
+        setError("Something went wrong. Try again.");
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -31,7 +37,8 @@ function MoviePage() {
 
   }, [])
 
-  if (!movie) return <p>Laddar film...</p>
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>{error}</p>
   return <MovieDetails movie={movie}/>
 }
 
