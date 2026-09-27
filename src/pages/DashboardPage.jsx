@@ -22,7 +22,7 @@ function DashboardPage() {
         if (!res.ok) throw new Error("Could not load movies")
         const data = await res.json();
         setMovies(data.results)
-      } catch (error) {
+      } catch {
         setError("Something went wrong. Try again.");
       } finally {
         setLoading(false);
@@ -42,7 +42,7 @@ function DashboardPage() {
       if (!res.ok) throw new Error("Could not search for movie")
       const data = await res.json();
       setMovies(data.results)
-    } catch (error) {
+    } catch {
       setError("Something went wrong. Try again.");
     } finally {
       setLoading(false)

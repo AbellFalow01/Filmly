@@ -1,5 +1,5 @@
 import "../styles/movieDetails.css"
-import SaveButton from "./saveButton"
+import SaveButton from "./SaveButton"
 
 
 

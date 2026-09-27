@@ -33,7 +33,7 @@ function SavedPage() {
             }
             const data = await res.json();
             savedMovieList.push(data);
-          } catch (error) {
+          } catch {
             setError("Something went wrong. Try again.");
           }
         }

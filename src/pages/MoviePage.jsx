@@ -26,7 +26,7 @@ function MoviePage() {
         if (!res.ok) throw new Error("Could not search for movie")
         const data = await res.json();
         setMovie(data)
-      } catch (error) {
+      } catch {
         setError("Something went wrong. Try again.");
       } finally {
         setLoading(false)
@@ -35,7 +35,7 @@ function MoviePage() {
 
     getData();
 
-  }, [])
+  }, [id])
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>{error}</p>

@@ -36,3 +36,18 @@ npm run dev
 ## API
 
 Filmly uses The Movie Database (TMDB) API to get movie information.
+
+## Requirements
+
+The project includes:
+
+- At least 5 React components
+- Multiple pages using React Router
+- Navigation between pages without reloading the website
+- State that is shared between components
+- API requests to an external API
+- Loading and error handling
+- A form with validation and error feedback
+- Data saved in localStorage
+- A structured folder system
+- Git commits throughout the project
