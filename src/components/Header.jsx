@@ -10,10 +10,6 @@ function Header() {
         <Link to="/" className="nav-link">Dashboard</Link>
         <Link to="/saved" className="nav-link">Saved</Link>
       </nav>
-      <div className="search-bar-wrapper">
-        <input className="search-bar" type="text" />
-        <button className="search-button">Search</button>
-      </div>
     </header>
   )
 }

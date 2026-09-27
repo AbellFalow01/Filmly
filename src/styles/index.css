@@ -13,8 +13,10 @@ body {
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 50px 0;
+  align-items: center;
+  padding-bottom: 50px;
 }
 
 .movie-grid {
@@ -22,4 +24,37 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-inline: 20px;
+  padding-block: 20px;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  height: 30px;
+}
+
+.search-bar {
+  outline: none;
+  border: 1px solid black;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.search-button {
+  border: 1px solid black;
+  border-left: none;
+  background-color: black;
+  border-radius: 0 5px 5px 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  color: white;
 }

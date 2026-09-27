@@ -35,31 +35,6 @@ nav {
   font-weight: 500;
 }
 
-.search-bar-wrapper {
-  display: flex;
-  height: 30px;
-}
-
-.search-bar {
-  outline: none;
-  border: 1px solid black;
-  border-right: none;
-  border-radius: 5px 0 0 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.search-button {
-  border: 1px solid black;
-  border-left: none;
-  background-color: black;
-  border-radius: 0 5px 5px 0;
-  padding-right: 10px;
-  padding-left: 10px;
-  cursor: pointer;
-  color: white;
-}
-
 @media (max-width: 768px) {
   header {
     flex-direction: column;

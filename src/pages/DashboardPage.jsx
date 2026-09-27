@@ -1,5 +1,6 @@
 import MovieCard from "../components/MovieCard"
 import { useEffect, useState } from "react";
+import SearchBar from "../components/SearchBar"
 
 function DashboardPage() {
 
@@ -12,7 +13,7 @@ function DashboardPage() {
 
   useEffect(() => {
 
-    const getData = async () => {
+  const getData = async () => {
       try {
         const res = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
         const data = await res.json();
@@ -26,7 +27,21 @@ function DashboardPage() {
 
   }, [])
 
+  const searchMovie = async (search) => {
+    try {
+      const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options);
+      const data = await res.json();
+      setMovies(data.results)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
+    <>
+    <div className="search-wrapper">
+      <SearchBar onSearch={searchMovie}/>
+    </div>
     <div className="movie-grid">
       {
         movies.map(movie => (
@@ -34,6 +49,7 @@ function DashboardPage() {
         ))
       }
     </div>
+    </>
   )
 }
 
